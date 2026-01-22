@@ -1,0 +1,55 @@
+{
+  "outputSpecs": [{
+    "kind": "ConditionalJoinSpec",
+    "description": "Output varies based on Detailed property",
+    "alternatives": [
+      {
+        "condition": "Simple output (Detailed = FALSE)",
+        "joinSpec": {
+          "kind": "OperatorJoinSpec",
+          "joinOperators": [{
+            "kind": "JoinOperator",
+            "joinType": "left",
+            "leftPair": {
+              "kind": "ColumnPair",
+              "lColumns": ["Observation"],
+              "rColumns": ["Observation"]
+            },
+            "rightRelation": {
+              "kind": "TableRelation",
+              "attributes": [
+                {"kind": "Attribute", "name": "flag", "type": "string"},
+                {"kind": "Attribute", "name": "filename", "type": "string"}
+              ]
+            }
+          }]
+        }
+      },
+      {
+        "condition": "Detailed output (Detailed = TRUE)",
+        "joinSpec": {
+          "kind": "OperatorJoinSpec",
+          "joinOperators": [{
+            "kind": "JoinOperator",
+            "joinType": "left",
+            "leftPair": {
+              "kind": "ColumnPair",
+              "lColumns": ["Observation"],
+              "rColumns": ["Observation"]
+            },
+            "rightRelation": {
+              "kind": "TableRelation",
+              "attributes": [
+                {"kind": "Attribute", "name": "FlowRate_flag", "type": "string"},
+                {"kind": "Attribute", "name": "SigAcqtn_flag", "type": "string"},
+                {"kind": "Attribute", "name": "DynRange_flag", "type": "string"},
+                {"kind": "Attribute", "name": "QC_flag", "type": "string"},
+                {"kind": "Attribute", "name": "filename", "type": "string"}
+              ]
+            }
+          }]
+        }
+      }
+    ]
+  }]
+}
